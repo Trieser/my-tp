@@ -1,16 +1,39 @@
 <template>
-  <main>
-    <div class="px-4 py-6 sm:px-0">
-      <div
-        class="p-4 text-center text-gray-400 border-4 border-gray-200 border-dashed rounded-lg  h-96"
-      >
-        Here goes your content. You can also go the
-        <router-link
-          to="/about"
-          class="text-indigo-600 underline hover:text-indigo-500"
-          >About page</router-link
-        >.
+  <Preloader v-if="isLoading" />
+  <section class="min-h-screen bg-black text-white flex flex-col justify-center items-start px-6 md:px-24 font-sans">
+    <div class="max-w-3xl space-y-5">
+      <p class="text-lg uppercase text-gray-400 tracking-wider">Creative Developer</p>
+
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+        Hello, my name is<br />
+        <span class="text-indigo-400">Dmitrie</span>.<br />
+        Frontend Developer<br />
+      </h1>
+
+      <p class="text-md md:text-lg text-gray-400 max-w-lg">
+        Dedicated to crafting impactful digital experiences. Always exploring new possibilities and pushing boundaries.
+      </p>
+
+      <div class="flex gap-4 pt-4">
+        <a href="#projects" class="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 transition font-medium">
+          View Projects
+        </a>
+        <a href="mailto:kamu@email.com" class="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition font-medium">
+          Contact Me
+        </a>
       </div>
     </div>
-  </main>
+  </section>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import Preloader from '../components/Preloader.vue'
+
+const isLoading = ref(true)
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = false
+  }, 2000)
+})
+</script>
